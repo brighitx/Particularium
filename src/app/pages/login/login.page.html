@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-card class="loginheader">
+    <img src="assets/FondoLoginn.jpg" />
+  </ion-card>
+</ion-header>
+
+<ion-content text-center class="jeje">
+  <form id="formulario" #formulario="ngForm" (ngSubmit)="onSubmitTemplate()">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Correo electrónico</ion-label>
+        <ion-input type="email" name="email"
+          pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+          [(ngModel)]="usuario.email" required>
+
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input type="password" name="password" [(ngModel)]="usuario.password" required>
+
+        </ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-button expand="full" type="submit" color="danger" [disabled]="formulario.invalid">Iniciar sesion</ion-button>
+  </form>
+  -O-
+  <div class="padding">
+    <ion-button fill="outline" expand="block"  routerLink="/register" color="danger">Registrar</ion-button>
+  </div>
+
+</ion-content>

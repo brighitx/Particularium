@@ -7,6 +7,18 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  slideTexto: SlideTexto[] = [
+    {
+      texto: "Un viaje muy largo se inicia con un sólo paso"
+    },
+    { texto: "Miau miau miau miau miau" },
+    { texto: "Miau miau miau miau miau" }
+  ];
 
+  constructor() { }
+
+}
+
+interface SlideTexto {
+  texto: string;
 }
