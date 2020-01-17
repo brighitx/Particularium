@@ -1,12 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-start',
+  templateUrl: './start.page.html',
+  styleUrls: ['./start.page.scss'],
 })
-export class HomePage {
-
+export class StartPage {
   slideTexto: SlideTexto[] = [
     {
       texto: "Un viaje muy largo se inicia con un sólo paso"
