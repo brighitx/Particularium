@@ -4,15 +4,15 @@
 
 <ion-content text-center padding>
     <div class="container">
-        <form [formGroup]="loginForm">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
               <ion-item>
                 <ion-label position="floating">Email</ion-label>
                 <ion-input class="form-control" formControlName="email" type="email" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"></ion-input>
             </ion-item>
             <div class="error-messages">
-                <ng-container *ngFor="let error of error_messages.fname">
+                <ng-container *ngFor="let error of error_messages.email">
                     <div class="error-message"
-                        *ngIf="loginForm.get('email').hasError(error.type) && (loginForm.get('email').dirty || loginForm.get('email').touched)">
+                        *ngIf="registerForm.get('email').hasError(error.type) && (registerForm.get('email').dirty || registerForm.get('email').touched)">
                         {{ error.message }}
                     </div>
                 </ng-container>
@@ -25,7 +25,7 @@
             <div class="error-messages">
                 <ng-container *ngFor="let error of error_messages.password">
                     <div class="error-message"
-                        *ngIf="loginForm.get('password').hasError(error.type) && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+                        *ngIf="registerForm.get('password').hasError(error.type) && (registerForm.get('password').dirty || registerForm.get('password').touched)">
                         {{ error.message }}
                     </div>
                 </ng-container>
@@ -38,16 +38,16 @@
             <div class="error-messages">
                 <ng-container *ngFor="let error of error_messages.confirmpassword">
                     <div class="error-message"
-                        *ngIf="loginForm.get('confirmpassword').hasError(error.type) && (loginForm.get('confirmpassword').dirty || loginForm.get('confirmpassword').touched)">
+                        *ngIf="registerForm.get('confirmpassword').hasError(error.type) && (registerForm.get('confirmpassword').dirty || registerForm.get('confirmpassword').touched)">
                         {{ error.message }}
                     </div>
                 </ng-container>
                 <div class="error-message"
-                    *ngIf="!loginForm.get('confirmpassword').errors && loginForm.hasError('passwordNotMatch') && (loginForm.get('confirmpassword').dirty || loginForm.get('confirmpassword').touched)">
+                    *ngIf="!registerForm.get('confirmpassword').errors && registerForm.hasError('passwordNotMatch') && (registerForm.get('confirmpassword').dirty || registerForm.get('confirmpassword').touched)">
                     Las contraseñas no coinciden
                 </div>
             </div>
-            <ion-button expand=full color="danger" [disabled]="!loginForm.valid">Registrar</ion-button>
+            <ion-button expand=full color="danger" [disabled]="!registerForm.valid" type="submit">Registrar</ion-button>
         </form>
 
     </div>
