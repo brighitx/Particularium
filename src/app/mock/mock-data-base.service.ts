@@ -20,8 +20,8 @@ export class MockDataBaseService {
 
   constructor() {
     this.createUsers();
-    this.createOffers();
-    this.createDemands();
+   // this.createOffers();
+    //this.createDemands();
   }
   private createOffers() {
     this._offers = new Array<Offer>();

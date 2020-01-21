@@ -1,11 +1,30 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Profile</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content padding>
-  <ion-button size="large" class="roundB">
-    <ion-icon name="star"></ion-icon>
-  </ion-button>
+
+<ion-content text-center>
+  <!--<div id="map"></div>-->
+  <ion-card>
+    <ion-item color="dark">
+      <ion-checkbox slot="start" id="check" color="dark" [(ngModel)]="profesor" (ionChange)="estado()" *ngIf="!alumno"></ion-checkbox>
+      <ion-label>Profesor</ion-label>
+    </ion-item>
+    <ion-card-content>
+      <ion-text><h2>Ubicación</h2></ion-text>
+      <ion-button expand="block" color="danger">Dar ubicación</ion-button>
+      <p>{{reverseGeocodingResults}}</p> 
+      <ion-text><h2>Titulación</h2></ion-text>
+      <ion-input></ion-input> 
+      
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card color="dark">
+    <ion-item color="dark">
+      <ion-checkbox slot="start" id="check" color="dark" [(ngModel)]="alumno" (ionChange)="estado()" *ngIf="!profesor"></ion-checkbox>
+      <ion-label>Alumno</ion-label>
+    </ion-item>
+    <ion-card-content>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button size="large" color="danger" class="roundB" routerLink="/main">Create profile</ion-button>
 </ion-content>
