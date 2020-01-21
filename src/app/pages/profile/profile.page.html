@@ -1,30 +1,51 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="danger"></ion-back-button>
+    </ion-buttons>
+    <img src="assets/Logo.png" height="42" width="42" class="center" />
+  </ion-toolbar>
+</ion-header>
 
-
-<ion-content text-center>
+<ion-content>
   <!--<div id="map"></div>-->
   <ion-card>
     <ion-item color="dark">
-      <ion-checkbox slot="start" id="check" color="dark" [(ngModel)]="profesor" (ionChange)="estado()" *ngIf="!alumno"></ion-checkbox>
-      <ion-label>Profesor</ion-label>
+      <ion-checkbox slot="start" id="check" color="dark" [(ngModel)]="profesor" (ionChange)="estado()" *ngIf="!alumno">
+      </ion-checkbox>
+      <ion-text id="text">Profesor</ion-text>
     </ion-item>
     <ion-card-content>
-      <ion-text><h2>Ubicación</h2></ion-text>
-      <ion-button expand="block" color="danger">Dar ubicación</ion-button>
-      <p>{{reverseGeocodingResults}}</p> 
-      <ion-text><h2>Titulación</h2></ion-text>
-      <ion-input></ion-input> 
-      
+      <h2>Ubicación</h2>
+      <ion-button expand="block" color="danger" (click)="getUserLocation()">Dar ubicación</ion-button>
+      <p>{{geoUbication}}</p>
+      <ion-item>
+        <ion-label position="floating">Titulación</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+
     </ion-card-content>
   </ion-card>
 
-  <ion-card color="dark">
+  <ion-card>
     <ion-item color="dark">
-      <ion-checkbox slot="start" id="check" color="dark" [(ngModel)]="alumno" (ionChange)="estado()" *ngIf="!profesor"></ion-checkbox>
-      <ion-label>Alumno</ion-label>
+      <ion-checkbox slot="start" id="check" color="dark" [(ngModel)]="alumno" (ionChange)="estado()" *ngIf="!profesor">
+      </ion-checkbox>
+      <ion-text id="text">Alumno</ion-text>
     </ion-item>
     <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
     </ion-card-content>
   </ion-card>
-
-  <ion-button size="large" color="danger" class="roundB" routerLink="/main">Create profile</ion-button>
+<div class="align">
+  <ion-button size="large" color="danger" class="roundButton" routerLink="/main">Crear perfil</ion-button>
+</div>
+  
 </ion-content>

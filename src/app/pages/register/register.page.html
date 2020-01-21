@@ -1,8 +1,14 @@
-<ion-header>
-
+<ion-header no-border>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-back-button color="danger"></ion-back-button>
+        </ion-buttons>
+        <img src="assets/Logo.png" height="42" width="42" class="center"/>
+      </ion-toolbar>      
 </ion-header>
 
 <ion-content text-center padding>
+    <h1 id="titulo">Crea tu cuenta</h1>
     <div class="container">
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
               <ion-item>
