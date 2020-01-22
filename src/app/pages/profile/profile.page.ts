@@ -13,6 +13,18 @@ declare var google;
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage {
+
+  profesor: boolean;
+  alumno: boolean;
+
+  estado() {
+    console.log('Nuevo estado:' + this.profesor);
+  }
+
+  enlace(){
+    
+  }
+
   reverseGeocodingResults: string = '';
   geoLocality: string = '';
   geoProvince: string = '';
