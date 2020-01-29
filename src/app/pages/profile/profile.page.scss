@@ -1,0 +1,18 @@
+#check{
+    --size: 40px;
+}
+#text{
+    font-size: 35px;
+}
+
+.center {
+    display: block;
+    margin-left: 40%;
+    margin-right: auto;
+}
+.align{
+    text-align: center;
+}
+.roundButton{
+     --border-radius: 50px;
+}

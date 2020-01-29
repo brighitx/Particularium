@@ -1,0 +1,28 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-title id="text">Particularium</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let item of getData()">
+    <ion-card-header>
+      <ion-card-subtitle>{{getUser(item.uid).name}}</ion-card-subtitle>
+      <ion-label *ngIf="checkUserStudent()"><ion-icon name="pin"></ion-icon> {{getUser(item.uid).address}}<br></ion-label>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label *ngIf="checkUserStudent()">Titulo: {{getUser(item.uid).tittle}} <br></ion-label>
+        <ion-label>Email: {{getUser(item.uid).email}}<br></ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label expand="full">Dificultad: {{item.level}} <br></ion-label>
+        <ion-label expand="full">Asignatura: {{item.subject}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label expand="full">Movilidad: {{item.mobility}} <br></ion-label>
+        <ion-label expand="full">Modelo: {{item.model}}<br></ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

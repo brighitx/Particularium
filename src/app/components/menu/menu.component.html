@@ -1,0 +1,43 @@
+<ion-menu menuId="perfil" side="end" type="overlay" contentId="principal" id="perfil">
+  <div class="logo">
+    <img src="assets/profile.png" height="100" width="100" />
+  </div>
+  <ion-content color="danger">
+    <ion-list id="color">
+
+      <ion-item color="danger" [routerLink]="['/update-profile']">
+        <ion-icon slot="start" name="person"></ion-icon>
+        Editar perfil
+      </ion-item>
+
+
+      <ion-item color="danger" [routerLink]="['/create-demand']" *ngIf="checkUserStudent()">
+        <ion-icon slot="start" name="document"></ion-icon>
+        Crear demanda
+      </ion-item>
+
+
+      <ion-item color="danger" [routerLink]="['/create-offer']" *ngIf="!checkUserStudent()">
+        <ion-icon slot="start" name="document"></ion-icon>
+        Crear oferta
+      </ion-item>
+
+
+      <ion-item color="danger" [routerLink]="['/show-my-offers']" *ngIf="checkUserStudent()">
+        <ion-icon slot="start" name="filing"></ion-icon>
+        Mostrar mis demandas
+      </ion-item>
+
+      <ion-item color="danger" [routerLink]="['/show-my-offers']" *ngIf="!checkUserStudent()">
+        <ion-icon slot="start" name="filing"></ion-icon>
+        Mostrar mis oferta
+      </ion-item>
+
+      <ion-item color="danger" (click)="signOut()">
+        <ion-icon slot="start" name="exit"></ion-icon>
+        Cerrar sesion
+      </ion-item>
+
+    </ion-list>
+  </ion-content>
+</ion-menu>

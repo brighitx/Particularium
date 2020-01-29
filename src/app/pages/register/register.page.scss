@@ -1,0 +1,17 @@
+#titulo{
+    text-align: start;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 40px;
+}
+
+.center {
+    display: block;
+    margin-left: 40%;
+    margin-right: auto;
+}
+
+.roundButton{
+    --border-radius: 50px;
+    margin-top: 20px;
+}
+  

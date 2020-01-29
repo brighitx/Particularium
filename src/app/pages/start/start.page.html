@@ -1,0 +1,21 @@
+
+
+<ion-content text-center class="home">
+
+  <div class="padding">
+    <img src="assets/Logo.png" height="150" width="150" style="align-items: center" />
+
+    <ion-slides pager="true">
+      <ion-slide *ngFor="let item of slideTexto">
+        <h1>{{item.texto}}</h1>
+      </ion-slide>
+    </ion-slides>
+    <div class="buttons">
+      <ion-button expand=block routerLink="/login" color="danger" size="large">Iniciar sesión</ion-button>
+      <ion-button expand=block  routerLink="/register" color="danger" size="large">Registrar</ion-button>
+    </div>
+
+  </div>
+
+
+</ion-content>
