@@ -11,21 +11,21 @@
   <!--<div id="map"></div>-->
   <ion-card>
     <ion-item color="dark">
-      <ion-checkbox slot="start" id="check" color="dark" [(ngModel)]="profesor" (ionChange)="estado()" *ngIf="!alumno">
+      <ion-checkbox slot="start" id="check" color="dark" [(ngModel)]="teacher" (ionChange)="estado()">
       </ion-checkbox>
       <ion-text id="text">Profesor</ion-text>
     </ion-item>
-    <ion-card-content>
+    <ion-card-content *ngIf="teacher">
       <h2>Ubicación</h2>
       <ion-button expand="block" color="danger" (click)="getUserLocation()">Dar ubicación</ion-button>
-      <p>{{geoUbication}}</p>
+     <!-- <p>{{geoUbication}}</p>-->
       <ion-item>
-        <ion-label position="floating">Titulación</ion-label>
-        <ion-input></ion-input>
+        <ion-label position="floating" >Titulación</ion-label>
+        <ion-input [(ngModel)]="tittle"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label position="floating">Nombre</ion-label>
-        <ion-input></ion-input>
+        <ion-label position="floating"  >Nombre</ion-label>
+        <ion-input [(ngModel)]="nameUserTeacher"></ion-input>
       </ion-item>
 
     </ion-card-content>
@@ -33,19 +33,17 @@
 
   <ion-card>
     <ion-item color="dark">
-      <ion-checkbox slot="start" id="check" color="dark" [(ngModel)]="alumno" (ionChange)="estado()" *ngIf="!profesor">
-      </ion-checkbox>
       <ion-text id="text">Alumno</ion-text>
     </ion-item>
-    <ion-card-content>
+    <ion-card-content *ngIf="!teacher">
       <ion-item>
-        <ion-label position="floating">Nombre</ion-label>
-        <ion-input></ion-input>
+        <ion-label position="floating" >Nombre</ion-label>
+        <ion-input [(ngModel)]="nameUserStudent"></ion-input>
       </ion-item>
     </ion-card-content>
   </ion-card>
-<div class="align">
-  <ion-button size="large" color="danger" class="roundButton" (click)="enlace()">Crear perfil</ion-button>
+<div class="align" *ngIf="okButton()">
+  <ion-button size="large" color="danger" class="roundButton" (click)="crearPerfil()">Crear perfil</ion-button>
 </div>
   
 </ion-content>

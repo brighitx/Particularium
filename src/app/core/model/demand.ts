@@ -1,116 +1,87 @@
 export class Demand {
 
-    // ALUMNOOOOOOO
+
+    // tslint:disable-next-line:variable-name
     private _uid: string;
-    private _did: string;
+    // tslint:disable-next-line:variable-name
+    private _id: string;
+    // tslint:disable-next-line:variable-name
     private _subject: string;
+    // tslint:disable-next-line:variable-name
     private _level: string;
+    // tslint:disable-next-line:variable-name
     private _model: string;
+    // tslint:disable-next-line:variable-name
     private _mobility: boolean;
 
-    constructor (uid: string, did: string, subject: string, level: string, model: string, mobility: boolean) {
+    constructor(uid: string, id: string, subject: string, level: string, model: string, mobility: boolean) {
         this._uid = uid;
-        this._did = did;
+        this._id = id;
         this._subject = subject;
         this._level = level;
         this._model = model;
         this._mobility = mobility;
     }
 
-    /**
-     * Getter uid
-     * @return {string}
-     */
-	public get uid(): string {
-		return this._uid;
-	}
 
-    /**
-     * Getter oif
-     * @return {string}
-     */
-	public get did(): string {
-		return this._did;
-	}
+    public get uid(): string {
+        return this._uid;
+    }
 
-    /**
-     * Getter subject
-     * @return {string}
-     */
-	public get subject(): string {
-		return this._subject;
-	}
 
-    /**
-     * Getter level
-     * @return {string}
-     */
-	public get level(): string {
-		return this._level;
-	}
+    public get id(): string {
+        return this._id;
+    }
 
-    /**
-     * Getter model
-     * @return {string}
-     */
-	public get model(): string {
-		return this._model;
-	}
 
-    /**
-     * Getter mobility
-     * @return {boolean}
-     */
-	public get mobility(): boolean {
-		return this._mobility;
-	}
+    public get subject(): string {
+        return this._subject;
+    }
 
-    /**
-     * Setter uid
-     * @param {string} value
-     */
-	public set uid(value: string) {
-		this._uid = value;
-	}
 
-    /**
-     * Setter oif
-     * @param {string} value
-     */
-	public set did(value: string) {
-		this._did = value;
-	}
+    public get level(): string {
+        return this._level;
+    }
 
-    /**
-     * Setter subject
-     * @param {string} value
-     */
-	public set subject(value: string) {
-		this._subject = value;
-	}
 
-    /**
-     * Setter level
-     * @param {string} value
-     */
-	public set level(value: string) {
-		this._level = value;
-	}
+    public get model(): string {
+        return this._model;
+    }
 
-    /**
-     * Setter model
-     * @param {string} value
-     */
-	public set model(value: string) {
-		this._model = value;
-	}
 
-    /**
-     * Setter mobility
-     * @param {boolean} value
-     */
-	public set mobility(value: boolean) {
-		this._mobility = value;
-	}
+    public get mobility(): boolean {
+        return this._mobility;
+    }
+
+    // tslint:disable-next-line: adjacent-overload-signatures
+    public set uid(value: string) {
+        this._uid = value;
+    }
+
+    // tslint:disable-next-line: adjacent-overload-signatures
+    public set id(value: string) {
+        this._id = value;
+    }
+
+    // tslint:disable-next-line: adjacent-overload-signatures
+    public set subject(value: string) {
+        this._subject = value;
+    }
+
+
+    // tslint:disable-next-line: adjacent-overload-signatures
+    public set level(value: string) {
+        this._level = value;
+    }
+
+    // tslint:disable-next-line: adjacent-overload-signatures
+    public set model(value: string) {
+        this._model = value;
+    }
+
+    // tslint:disable-next-line: adjacent-overload-signatures
+    public set mobility(value: boolean) {
+        this._mobility = value;
+    }
 
 }

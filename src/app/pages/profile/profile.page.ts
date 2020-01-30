@@ -1,9 +1,11 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-
+import { resolve } from 'url';
 import { NativeGeocoder, NativeGeocoderOptions, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { MenuController, Platform } from '@ionic/angular';
-
+import { AdapterDataBaseService } from 'src/app/services/adapter-data-base.service';
+import { AdapterGeolocalitationService } from 'src/app/services/adapterGeo/adapter-geolocalitation.service';
 
 declare var google;
 
@@ -14,49 +16,50 @@ declare var google;
 })
 export class ProfilePage {
 
-  profesor: boolean;
-  alumno: boolean;
+  public teacher: boolean;
+
+  public nameUserStudent: string;
+  public nameUserTeacher: string;
+  public address: string;
+  public tittle: string;
+
+  constructor(public menuCtrl: MenuController,
+              public router: Router,
+              public dataBase: AdapterDataBaseService,
+              public geo: AdapterGeolocalitationService) {
+
+  }
 
   estado() {
-    console.log('Nuevo estado:' + this.profesor);
+    console.log('Nuevo estado:' + this.teacher);
   }
 
-  enlace(){
-    
-  }
-
-  reverseGeocodingResults: string = '';
-  geoLocality: string = '';
-  geoProvince: string = '';
-  geoAutonomousCommunity: string = '';
-  geoCountryCode: string = '';
-  geoUbication: string = '';
-  constructor(public menuCtrl: MenuController, public geolocation: Geolocation, public geocoder: NativeGeocoder) {
-
-  }
-
-  async getUserLocation() {
-    const rta = await this.geolocation.getCurrentPosition();
-    const myLatLng = {
-      lat: rta.coords.latitude,
-      lng: rta.coords.longitude
-    };
-    this.ReverseGeocoding(myLatLng.lat, myLatLng.lng);
-  }
-
-  ReverseGeocoding(latitude, longitude) {
-    var options: NativeGeocoderOptions = {
-      useLocale: true,
-      maxResults: 1
+  okButton(): boolean {
+    if (this.teacher) {
+      if (this.nameUserTeacher !== undefined) {
+        if (this.tittle !== undefined) {
+          if (this.address !== undefined) { return true; }
+        }
+      }
+    } else {
+      if (this.nameUserStudent !== undefined) { return true; }
     }
-    this.geocoder.reverseGeocode(latitude, longitude, options).then((results) => {
-      this.reverseGeocodingResults = JSON.stringify(results[0]);
-      this.geoLocality = results[0].locality;
-      this.geoProvince = results[0].subAdministrativeArea;
-      this.geoAutonomousCommunity = results[0].administrativeArea;
-      this.geoCountryCode = results[0].countryCode;
-      this.geoUbication = this.geoLocality + ", " + this.geoProvince + ", " + this.geoAutonomousCommunity + ", " + this.geoCountryCode;
-    })
+    return false;
   }
 
+  crearPerfil() {
+    if (this.teacher) {
+      this.dataBase.updateUser(this.nameUserTeacher, this.tittle, this.address);
+    } else {
+      this.dataBase.updateUser(this.nameUserStudent);
+    }
+    this.router.navigate(['stream']);
+  }
+  async getUserLocation() {
+    this.geo.getUserLocation()
+      .then((resolve) => {
+        this.address = resolve;
+      })
+      .catch();
+  }
 }

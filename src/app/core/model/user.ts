@@ -1,7 +1,7 @@
 export class User {
 
     // tslint:disable-next-line:variable-name
-    private _uid: string;
+    private _id: string;
     // tslint:disable-next-line:variable-name
     private _name: string;
     // tslint:disable-next-line:variable-name
@@ -11,19 +11,19 @@ export class User {
     // tslint:disable-next-line:variable-name
     private _tittle: string;
     // tslint:disable-next-line:variable-name
-    private _adress: string;
+    private _address: string;
 
-    constructor(uid: string, name: string, password: string, email: string, tittle: string, adress: string) {
-        this._uid = uid;
+    constructor(id: string, name: string, password: string, email: string, tittle: string, address: string) {
+        this._id = id;
         this._name = name;
         this._password = password;
         this._email = email;
         this._tittle = tittle;
-        this._adress = adress;
+        this._address = address;
     }
 
-    public get uid(): string {
-        return this._uid;
+    public get id(): string {
+        return this._id;
     }
     public get name(): string {
         return this._name;
@@ -40,12 +40,12 @@ export class User {
         return this._tittle;
     }
 
-    public get adress(): string {
-        return this._adress;
+    public get address(): string {
+        return this._address;
     }
     // tslint:disable-next-line:adjacent-overload-signatures
-    public set uid(value: string) {
-        this._uid = value;
+    public set id(value: string) {
+        this._id = value;
     }
     // tslint:disable-next-line:adjacent-overload-signatures
     public set name(value: string) {
@@ -65,8 +65,8 @@ export class User {
         this._tittle = value;
     }
     // tslint:disable-next-line:adjacent-overload-signatures
-    public set adress(value: string) {
-        this._adress = value;
+    public set address(value: string) {
+        this._address = value;
     }
 
 

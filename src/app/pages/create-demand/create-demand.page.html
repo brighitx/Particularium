@@ -1,0 +1,36 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-title id="text">Particularium</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content text-center>
+  <ion-item>
+    <ion-label position="floating" >Materia</ion-label>
+    <ion-input [(ngModel)]="subject"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating" >Nivel</ion-label>
+    <ion-select [(ngModel)]="level" okText="Aceptar" cancelText="Cancelar">
+      <ion-select-option value="basico">Basico</ion-select-option>
+      <ion-select-option value="intermedio">Intermedio</ion-select-option>
+      <ion-select-option value="avanzado">Avanzado</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating" >Modelo</ion-label>
+    <ion-select [(ngModel)]="model" okText="Aceptar" cancelText="Cancelar">
+      <ion-select-option value="individual">Individual</ion-select-option>
+      <ion-select-option value="grupal">Grupal</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item >
+    <ion-checkbox slot="start" color="success" [(ngModel)]="mobility">
+    </ion-checkbox>
+    <ion-text>Movilidad</ion-text>
+  </ion-item>
+
+  <div class="align" *ngIf="isValidForm()">
+    <ion-button size="large" color="danger" class="roundButton" (click)="createDemand()">Publicar</ion-button>
+  </div>
+</ion-content>

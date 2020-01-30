@@ -1,4 +1,6 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { IDatabase } from 'src/app/interfaces/database-i';
 
 @Component({
   selector: 'app-menu',
@@ -7,8 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(public database: IDatabase, public router: Router) {
+   }
+  private checkUserStudent(): boolean {
+    if (this.database.isLogin()) {
+      return this.database.checkUserStudent();
+    }
+    return true;
+  }
+  private signOut(){
+    this.database.signOut();
+    this.router.navigate(['start']);
+  }
   ngOnInit() {}
 
 }

@@ -26,6 +26,9 @@ export class UserBuilder {
     public build(): User {
         return new User(this.generateUID(), this._name, this._password, this._email, this._tittle, this._address);
     }
+    public buildWithId( id: string ): User {
+        return new User(id, this._name, this._password, this._email, this._tittle, this._address);
+    }
     name(name: string): UserBuilder {
         this._name = name;
         return this;

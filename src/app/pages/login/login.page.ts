@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MockDataBaseService } from 'src/app/mock/mock-data-base.service';
 import { Router, NavigationExtras } from '@angular/router';
 import { MenuController } from '@ionic/angular';
+import { AdapterDataBaseService } from 'src/app/services/adapter-data-base.service';
 
 
 @Component({
@@ -15,8 +15,8 @@ export class LoginPage implements OnInit {
     email: '',
     password: ''
   };
-  constructor(public dataBase: MockDataBaseService, public router: Router, public menuCtrl: MenuController) { }
-  
+  constructor(public dataBase: AdapterDataBaseService, public router: Router, public menuCtrl: MenuController) { }
+
   ionViewWillEnter() {
     this.menuCtrl.enable(false);
   }
@@ -26,13 +26,7 @@ export class LoginPage implements OnInit {
   onSubmit() {
     this.dataBase.signIn(this.user.email, this.user.password).then(() => {
       console.log('creado');
-      const navigationExtras: NavigationExtras = {
-        state: {
-          email: this.user.email,
-          password: this.user.password
-        }
-      };
-      this.router.navigate(['profile'], navigationExtras);
+      this.router.navigate(['stream']);
     }).catch(() => {
       console.log('fallo');
     });

@@ -48,6 +48,10 @@ export class OfferBuilder {
         this._mobility = mobility;
         return this;
     }
+    timetable(timetable: string): OfferBuilder {
+        this._timetable = timetable;
+        return this;
+    }
 
     private generateOID(): string {
         let d = new Date().getTime();

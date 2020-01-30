@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { MockDataBaseService } from 'src/app/mock/mock-data-base.service';
+import { Router, NavigationExtras } from '@angular/router';
+import { AdapterDataBaseService } from 'src/app/services/adapter-data-base.service';
 
 @Component({
   selector: 'app-register',
@@ -42,7 +43,7 @@ export class RegisterPage implements OnInit {
     }
     ],
   }
-  constructor(public formBuilder: FormBuilder, public database: MockDataBaseService) {
+  constructor(public formBuilder: FormBuilder, public router: Router, public database: AdapterDataBaseService) {
     this.registerForm = this.formBuilder.group({
       email: new FormControl('', Validators.compose([
         Validators.required
@@ -74,6 +75,12 @@ export class RegisterPage implements OnInit {
   onSubmit() {
     this.database.signUp(this.registerForm.value.email, this.registerForm.value.password).then(()=>{
       console.log("creado");
+      const navigationExtras: NavigationExtras = {
+        state: {
+         
+        }
+      };
+      this.router.navigate(['profile'], navigationExtras);
     }).catch(()=>{
       console.log("fallo")
     });

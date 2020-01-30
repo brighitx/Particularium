@@ -1,72 +1,72 @@
+import { ManagerUserService } from './managerUser/manager-user.service';
+import { ManagerOfferService } from './managerOffer/manager-offer.service';
+import { ManagerDemandService } from './managerDemand/manager-demand.service';
+
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, DocumentReference } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
-import { map, take } from 'rxjs/operators';
+import { Demand } from '../core/model/demand';
+import { Offer } from '../core/model/offer';
 import { User } from '../core/model/user';
-import { UserBuilder } from '../core/model/builders/userBuilder';
-import { Userable } from '../core/model/interfaces/userable';
+import { IDatabase } from '../interfaces/database-i';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AdapterDataBaseService {
-  private userActive: User;
-  private users: Observable<Userable[]>;
-  private userColection: AngularFirestoreCollection<Userable>;
-  private myUsers: User[];
-  constructor(private afs: AngularFirestore) {
-    this.userColection = this.afs.collection<User>('users');
-    this.users = this.userColection.snapshotChanges().pipe(
-      map(actions => {
-        return actions.map(a => {
-          const data = a.payload.doc.data();
-          const id = a.payload.doc.id;
-          return { id, ...data };
-        });
-      })
-    );
-    this.users.subscribe(
-      (res: any) => this.myUsers = res,
-      (err: any) => console.log('It is a error unexpected from firebase suscribe')
-    );
+
+export class AdapterDataBaseService implements IDatabase {
+  
+  constructor(private managerUser: ManagerUserService,
+              private managerDemand: ManagerDemandService,
+              private managerOffer: ManagerOfferService) {
   }
-  getUsers(): Observable<Userable[]> {
-    return this.users;
+  public checkUserStudent(): boolean {
+    return this.managerUser.checkUserStudent();
   }
-  signUp(email: string, password: string): Promise<any> {
-    return new Promise((resolver, rejected) => {
-      const user = (new UserBuilder).restart().email(email).password(password).build();
-      this.userColection.doc(user.uid).set({
-        name: user.name,
-        email: user.email,
-        adress: user.adress,
-        password: user.password,
-        tittle: user.tittle
-      })
-        .then(() => {
-          resolver(user);
-          this.userActive = user;
-        })
-        .catch(() => {
-          rejected('Error');
-        });
-    });
+  private getIdUserActive(): string {
+    return this.managerUser.getIdUserActive();
   }
-  signIn(email: string, password: string): Promise<any> {
-    return new Promise((resolver, rejected) => {
-      let encontrado = false;
-      console.log(this.myUsers);
-      this.myUsers.forEach(user => {
-        if (user.email === email && user.password === password) {
-          encontrado = true;
-          this.userActive = user;
-        }
-      });
-      if (encontrado) {
-        resolver('');
-      } else {
-        rejected('');
-      }
-    });
+  public signUp(email: string, password: string): Promise<any> {
+    return this.managerUser.signUp(email, password);
+  }
+  public signIn(email: string, password: string): Promise<any> {
+    return this.managerUser.signIn(email, password);
+  }
+  public createDemand(subject: string, level: string, model: string, mobility: boolean) {
+    this.managerDemand.createDemand(subject, level, model, mobility, this.getIdUserActive());
+  }
+  public createOffer(subject: string, level: string, model: string, mobility: boolean, timetable: string) {
+    this.managerOffer.createOffer(subject, level, model, mobility, timetable, this.getIdUserActive());
+  }
+  public getAllOffers(): Array<Offer> {
+    return this.managerOffer.getAllOffer();
+  }
+  public getAllDemands(): Array<Demand> {
+    return this.managerDemand.getAllDemands();
+  }
+  public getMyDemandOffer(): Array<Demand | Offer> {
+    if (this.checkUserStudent()) {
+      return this.managerDemand.getMyDemand(this.getIdUserActive());
+    }
+    return this.managerOffer.getMyOffer(this.getIdUserActive());
+  }
+  public takeUser(uid: string): User {
+    return this.managerUser.takeUser(uid);
+  }
+  public updateUser(nameUser: string, tittleUser = 'Student', addressUser = 'Student') {
+    this.managerUser.updateUser(nameUser, tittleUser, addressUser);
+  }
+  public isLogin(): boolean {
+    return this.managerUser.isLogin();
+  }
+  public signOut(): void {
+    this.managerUser.signOut();
+  }
+  public deleteOffer(id: string): void {
+    this.managerOffer.delete(id);
+  }
+  public deleteDemand(id: string): void {
+    this.managerDemand.delete(id);
+  }
+  public deleteUser(): void {
+    this.managerUser.delete();
   }
 }

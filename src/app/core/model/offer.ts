@@ -4,7 +4,7 @@ export class Offer {
     // tslint:disable-next-line:variable-name
     private _uid: string;
     // tslint:disable-next-line:variable-name
-    private _oid: string;
+    private _id: string;
     // tslint:disable-next-line:variable-name
     private _subject: string;
     // tslint:disable-next-line:variable-name
@@ -16,9 +16,9 @@ export class Offer {
     // tslint:disable-next-line:variable-name
     private _timetable: string;
 
-    constructor(uid: string, oif: string, subject: string, level: string, model: string, mobility: boolean, timetable: string) {
+    constructor(uid: string, id: string, subject: string, level: string, model: string, mobility: boolean, timetable: string) {
         this._uid = uid;
-        this._oid = oif;
+        this._id = id;
         this._subject = subject;
         this._level = level;
         this._model = model;
@@ -31,8 +31,8 @@ export class Offer {
         return this._uid;
     }
 
-    public get oid(): string {
-        return this._oid;
+    public get id(): string {
+        return this._id;
     }
 
 
@@ -64,8 +64,8 @@ export class Offer {
         this._uid = value;
     }
     // tslint:disable-next-line:adjacent-overload-signatures
-    public set oid(value: string) {
-        this._oid = value;
+    public set id(value: string) {
+        this._id = value;
     }
 
     // tslint:disable-next-line:adjacent-overload-signatures
