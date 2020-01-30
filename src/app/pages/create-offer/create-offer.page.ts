@@ -24,6 +24,6 @@ export class CreateOfferPage implements OnInit {
   }
   createOffer() {
     this.dataBase.createOffer(this.subject, this.level, this.model, this.mobility, this.timetable);
-    this.router.navigate(['stream']);
+    this.router.navigate(['show-my-offers']);
   }
 }

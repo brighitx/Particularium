@@ -1,7 +1,8 @@
+
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { Router, NavigationExtras } from '@angular/router';
-import { AdapterDataBaseService } from 'src/app/services/adapter-data-base.service';
+import { Router } from '@angular/router';
+import { IDatabase } from 'src/app/interfaces/database-i';
 
 @Component({
   selector: 'app-register',
@@ -43,7 +44,7 @@ export class RegisterPage implements OnInit {
     }
     ],
   }
-  constructor(public formBuilder: FormBuilder, public router: Router, public database: AdapterDataBaseService) {
+  constructor(public formBuilder: FormBuilder, public database: IDatabase, public router: Router) {
     this.registerForm = this.formBuilder.group({
       email: new FormControl('', Validators.compose([
         Validators.required
@@ -73,19 +74,13 @@ export class RegisterPage implements OnInit {
   }
 
   onSubmit() {
-    this.database.signUp(this.registerForm.value.email, this.registerForm.value.password).then(()=>{
-      console.log("creado");
-      const navigationExtras: NavigationExtras = {
-        state: {
-         
-        }
-      };
-      this.router.navigate(['profile'], navigationExtras);
-    }).catch(()=>{
-      console.log("fallo")
+    this.database.signUp(this.registerForm.value.email, this.registerForm.value.password).then(() => {
+      console.log('creado');
+      this.router.navigate(['profile']);
+    }).catch(() => {
+      console.log('fallo');
     });
-  
-    //console.log(this.loginForm.value);
+
   }
 
 }

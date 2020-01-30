@@ -1,6 +1,6 @@
+
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
-
 @Component({
   selector: 'app-start',
   templateUrl: './start.page.html',
@@ -9,19 +9,16 @@ import { MenuController } from '@ionic/angular';
 export class StartPage {
   slideTexto: SlideTexto[] = [
     {
-      texto: "Un viaje muy largo se inicia con un sólo paso"
+      texto: 'Un viaje muy largo se inicia con un solo paso'
     },
-    { texto: "Miau miau miau miau miau" },
-    { texto: "Miau miau miau miau miau" }
+    { texto: 'Te presentamos la mejor aplicación para aprender' },
+    { texto: 'Donde conoceras a los mejores docentes y alumnos.' }
   ];
-
-  constructor(public menuCtrl: MenuController) { }
+  constructor(public menuCtrl: MenuController) {}
   ionViewWillEnter() {
     this.menuCtrl.enable(false);
   }
-
 }
-
 
 interface SlideTexto {
   texto: string;

@@ -1,7 +1,7 @@
 import { MenuController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
-import { AdapterDataBaseService } from 'src/app/services/adapter-data-base.service';
 import { User } from 'src/app/core/model/user';
+import { IDatabase } from 'src/app/interfaces/database-i';
 
 @Component({
   selector: 'app-stream',
@@ -10,16 +10,15 @@ import { User } from 'src/app/core/model/user';
 })
 export class StreamPage implements OnInit {
 
-  constructor(public dataBase: AdapterDataBaseService, private menuCtrl: MenuController) { }
+  constructor(public dataBase: IDatabase, private menuCtrl: MenuController) { }
 
   getData() {
-    console.log(this.dataBase.checkUserStudent())
     if (this.dataBase.checkUserStudent()) {
       return this.dataBase.getAllOffers();
     }
     return this.dataBase.getAllDemands();
   }
-  checkUser() {
+  checkUserStudent() {
     return this.dataBase.checkUserStudent();
   }
   getUser(uid: string): User {

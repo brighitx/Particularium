@@ -1,15 +1,24 @@
 <ion-header no-border>
   <ion-toolbar>
-    <ion-title id="text">Particularium</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button color="danger" defaultHref="stream"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="text" *ngIf="!checkUserStudent()" >Mis ofertas</ion-title>
+    <ion-title class="text" *ngIf="checkUserStudent()" >Mis demandas</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-card *ngFor="let item of getData()">
+    <ion-item>
+      <ion-label>{{getUser(item.uid).name}}</ion-label>
+      <ion-button slot="end" color="danger" (click)="delete(item.id)">
+      <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-button>
+    </ion-item>
     <ion-card-header>
-      <ion-card-subtitle>{{getUser(item.uid).name}}</ion-card-subtitle>
-      <ion-label *ngIf="checkUserStudent()"><ion-icon name="pin"></ion-icon> {{getUser(item.uid).address}}<br></ion-label>
-    </ion-card-header>
+    <ion-label *ngIf="checkUserStudent()"><ion-icon name="pin"></ion-icon> {{getUser(item.uid).address}}<br></ion-label>
+  </ion-card-header>
     <ion-card-content>
       <ion-item>
         <ion-label *ngIf="checkUserStudent()">Titulo: {{getUser(item.uid).tittle}} <br></ion-label>

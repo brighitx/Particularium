@@ -1,11 +1,12 @@
+
+import { AdapterGeolocalitationService } from './../../services/adapterGeo/adapter-geolocalitation.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { resolve } from 'url';
-import { NativeGeocoder, NativeGeocoderOptions, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
-import { Geolocation } from '@ionic-native/geolocation/ngx';
+
+
 import { MenuController, Platform } from '@ionic/angular';
-import { AdapterDataBaseService } from 'src/app/services/adapter-data-base.service';
-import { AdapterGeolocalitationService } from 'src/app/services/adapterGeo/adapter-geolocalitation.service';
+import { IDatabase } from 'src/app/interfaces/database-i';
+
 
 declare var google;
 
@@ -25,7 +26,7 @@ export class ProfilePage {
 
   constructor(public menuCtrl: MenuController,
               public router: Router,
-              public dataBase: AdapterDataBaseService,
+              public dataBase: IDatabase,
               public geo: AdapterGeolocalitationService) {
 
   }

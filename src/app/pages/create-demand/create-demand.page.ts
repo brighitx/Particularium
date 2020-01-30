@@ -1,5 +1,6 @@
+import { Router } from '@angular/router';
+import { AdapterDataBaseService } from './../../services/adapter-data-base.service';
 import { Component, OnInit } from '@angular/core';
-import { AdapterDataBaseService } from 'src/app/services/adapter-data-base.service';
 
 @Component({
   selector: 'app-create-demand',
@@ -12,7 +13,7 @@ export class CreateDemandPage implements OnInit {
   private subject: string;
   private mobility: boolean;
 
-  constructor(private dataBase: AdapterDataBaseService) { }
+  constructor(private dataBase: AdapterDataBaseService, public router: Router) { }
 
   ngOnInit() {
   }
@@ -22,6 +23,7 @@ export class CreateDemandPage implements OnInit {
   }
   createDemand() {
     this.dataBase.createDemand(this.subject, this.level, this.model, this.mobility);
+    this.router.navigate(['stream']);
   }
 
 }
