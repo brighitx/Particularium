@@ -1,8 +1,10 @@
-#text{
+.text{
     font-size: 25px;
     color: #f25454;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.roundButton{
-    --border-radius: 50px;
+.btnPosition{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
 }

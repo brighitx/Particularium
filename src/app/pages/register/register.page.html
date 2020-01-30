@@ -1,19 +1,14 @@
-<ion-header no-border>
-    <ion-toolbar>
-        <ion-buttons slot="start">
-          <ion-back-button color="danger"></ion-back-button>
-        </ion-buttons>
-        <img src="assets/Logo.png" height="42" width="42" class="center"/>
-      </ion-toolbar>      
-</ion-header>
+<app-header></app-header>
 
 <ion-content text-center padding>
-    <h1 id="titulo">Crea tu cuenta</h1>
+    <h1 class="titulo">Crea tu cuenta</h1>
     <div class="container">
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-              <ion-item>
+            <ion-item>
                 <ion-label position="floating">Email</ion-label>
-                <ion-input class="form-control" formControlName="email" type="email" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"></ion-input>
+                <ion-input class="form-control" formControlName="email" type="email"
+                    pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$">
+                </ion-input>
             </ion-item>
             <div class="error-messages">
                 <ng-container *ngFor="let error of error_messages.email">
@@ -53,7 +48,8 @@
                     Las contraseñas no coinciden
                 </div>
             </div>
-            <ion-button size="large" color="danger" [disabled]="!registerForm.valid" type="submit" class="roundButton">Registrar</ion-button>
+            <ion-button class="btnPosition" size="large" color="danger" [disabled]="!registerForm.valid" type="submit" shape="round">
+                Registrar</ion-button>
         </form>
 
     </div>

@@ -41,8 +41,10 @@
     <ion-text>Movilidad</ion-text>
     <ion-checkbox slot="end" color="success" [(ngModel)]="mobility"></ion-checkbox>
   </ion-item>
-
-  <div class="align" *ngIf="isValidForm()">
-    <ion-button size="large" color="danger" class="roundButton" (click)="createOffer()">Publicar</ion-button>
-  </div>
 </ion-content>
+
+<ion-footer>
+  <div class="btnPosition" *ngIf="isValidForm()">
+    <ion-button color="danger" shape="round" (click)="createOffer()">Publicar</ion-button>
+  </div>
+</ion-footer>

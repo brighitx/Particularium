@@ -26,10 +26,6 @@ const routes: Routes = [
     canActivate: [IsLoginGuard]
   },
   {
-    path: 'main',
-    loadChildren: () => import('./pages/main/main.module').then(m => m.MainPageModule)
-  },
-  {
     path: 'stream',
     loadChildren: () => import('./pages/stream/stream.module').then(m => m.StreamPageModule),
     canActivate: [IsLoginGuard]

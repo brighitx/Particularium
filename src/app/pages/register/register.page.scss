@@ -1,4 +1,4 @@
-#titulo{
+.titulo{
     text-align: start;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 40px;
@@ -10,8 +10,6 @@
     margin-right: auto;
 }
 
-.roundButton{
-    --border-radius: 50px;
-    margin-top: 20px;
+.btnPosition{
+    margin-top: 5%;
 }
-  

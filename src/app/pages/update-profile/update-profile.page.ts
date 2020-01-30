@@ -11,5 +11,6 @@ export class UpdateProfilePage implements OnInit {
 
   ngOnInit() {
   }
-
+  onSubmit() {
+  }
 }

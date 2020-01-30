@@ -1,12 +1,8 @@
-
 import { AdapterGeolocalitationService } from './../../services/adapterGeo/adapter-geolocalitation.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-
-
 import { MenuController, Platform } from '@ionic/angular';
 import { IDatabase } from 'src/app/interfaces/database-i';
-
 
 declare var google;
 
@@ -25,9 +21,9 @@ export class ProfilePage {
   public tittle: string;
 
   constructor(public menuCtrl: MenuController,
-              public router: Router,
-              public dataBase: IDatabase,
-              public geo: AdapterGeolocalitationService) {
+    public router: Router,
+    public dataBase: IDatabase,
+    public geo: AdapterGeolocalitationService) {
 
   }
 
