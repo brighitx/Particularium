@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-
 import { AdapterGeolocalitationService } from './adapter-geolocalitation.service';
 
 describe('AdapterGeolocalitationService', () => {
