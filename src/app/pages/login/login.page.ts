@@ -1,7 +1,5 @@
-import { AdapterDataBaseService } from './../../services/adapter-data-base.service';
 import { Component, OnInit } from '@angular/core';
-import { MockDataBaseService } from 'src/app/mock/mock-data-base.service';
-import { Router, NavigationExtras } from '@angular/router';
+import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { IDatabase } from 'src/app/interfaces/database-i';
 

@@ -1,5 +1,5 @@
+import { IDatabase } from 'src/app/interfaces/database-i';
 import { Router } from '@angular/router';
-import { AdapterDataBaseService } from './../../services/adapter-data-base.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -13,7 +13,7 @@ export class CreateDemandPage implements OnInit {
   private subject: string;
   private mobility: boolean;
 
-  constructor(private dataBase: AdapterDataBaseService, public router: Router) { }
+  constructor(private dataBase: IDatabase, public router: Router) { }
 
   ngOnInit() {
   }

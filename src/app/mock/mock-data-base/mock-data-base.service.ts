@@ -1,27 +1,17 @@
 import { Observable } from 'rxjs';
-import { DemandBuilder } from './../core/model/builders/demandBuilder';
-import { OfferBuilder } from './../core/model/builders/offerBuilder';
-import { UserBuilder } from './../core/model/builders/userBuilder';
+import { DemandBuilder } from '../../core/model/builders/demandBuilder';
+import { OfferBuilder } from '../../core/model/builders/offerBuilder';
+import { UserBuilder } from '../../core/model/builders/userBuilder';
 import { Injectable } from '@angular/core';
-import { User } from '../core/model/user';
-import { Offer } from '../core/model/offer';
-import { Demand } from '../core/model/demand';
-import { IDatabase } from '../interfaces/database-i';
+import { User } from '../../core/model/user';
+import { Offer } from '../../core/model/offer';
+import { Demand } from '../../core/model/demand';
+import { IDatabase } from '../../interfaces/database-i';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MockDataBaseService implements IDatabase {
-  deleteOffer(id: string): void {
-    throw new Error("Method not implemented.");
-  }
-  deleteDemand(id: string): void {
-    throw new Error("Method not implemented.");
-  }
-  deleteUser(): void {
-    throw new Error("Method not implemented.");
-  }
-
 
   private login = false;
   private _userActive: User;
@@ -39,119 +29,33 @@ export class MockDataBaseService implements IDatabase {
   }
   private createOffers() {
     this._offers = new Array<Offer>();
-    this._offers.push(this.offerBuilder.restart()
-      .subject('Math')
-      .model('Single')
-      .mobility(true)
-      .level('Early')
-      .build(this._users[1].id));
-
-    this._offers.push(this.offerBuilder.restart()
-      .subject('History')
-      .model('Pair')
-      .mobility(true)
-      .level('Middle')
-      .build(this._users[3].id));
-
-    this._offers.push(this.offerBuilder.restart()
-      .subject('Physics')
-      .model('Group')
-      .mobility(true)
-      .level('High')
-      .build(this._users[5].id));
-
-    this._offers.push(this.offerBuilder.restart()
-      .subject('Spanish')
-      .model('Pairs')
-      .mobility(false)
-      .level('Common')
-      .build(this._users[5].id));
-
-    this._offers.push(this.offerBuilder.restart()
-      .subject('Chemistry')
-      .model('Single')
-      .mobility(false)
-      .level('Beginner')
-      .build(this._users[5].id));
-
-    this._offers.push(this.offerBuilder.restart()
-      .subject('English')
-      .model('Group')
-      .mobility(false)
-      .level('Beginer')
-      .build(this._users[5].id));
-
-    this._offers.push(this.offerBuilder.restart()
-      .subject('German')
-      .model('Single')
-      .mobility(true)
-      .level('Middle')
-      .build(this._users[5].id));
-
-    this._offers.push(this.offerBuilder.restart()
-      .subject('Chinese')
-      .model('Pair')
-      .mobility(false)
-      .level('Low')
-      .build(this._users[5].id));
-
-    this._offers.push(this.offerBuilder.restart()
-      .subject('Japanese')
-      .model('single')
-      .mobility(false)
-      .level('Common')
-      .build(this._users[5].id));
+    const mySubject: string[] = ['Math', 'History', 'Physics', 'Spanish', 'Chemistry', 'English', 'German', 'Chinese', 'Japanese'];
+    const myModel: string[] = ['single', 'Pair', 'Group', 'Pair', 'Single', 'Group', 'Single', 'Pair', 'Single'];
+    const myMobility: boolean[] = [true, true, true, false, false, false, false, true, false];
+    const myLevel: string[] = ['Early', 'Middle', 'High', 'Beginner', 'Common', 'Beginer', 'Low', 'Early', 'High'];
+    for (let i = 0; i < this.users.length; i++) {
+      this._offers.push(this.offerBuilder.restart()
+      .subject(mySubject[i])
+      .model(myModel[i])
+      .mobility(myMobility[i])
+      .level(myLevel[i])
+      .build(this._users[i].id));
+    }
   }
   private createDemands() {
     this._demands = new Array<Demand>();
-    this._demands.push(this.demandBuilder.restart()
-      .level('Advanced')
-      .mobility(false)
-      .model('Group')
-      .subject('Science')
-      .build(this._users[2].id));
-
-    this._demands.push(this.demandBuilder.restart()
-      .level('Low')
-      .mobility(false)
-      .model('single')
-      .subject('Programming')
-      .build(this._users[4].id));
-
-    this._demands.push(this.demandBuilder.restart()
-      .level('Advanced')
-      .mobility(false)
-      .model('Pair')
-      .subject('Economy')
-      .build(this._users[4].id));
-
-    this._demands.push(this.demandBuilder.restart()
-      .level('Common')
-      .mobility(true)
-      .model('Single')
-      .subject('English')
-      .build(this._users[4].id));
-
-    this._demands.push(this.demandBuilder.restart()
-      .level('Beginner')
-      .mobility(true)
-      .model('Group')
-      .subject('German')
-      .build(this._users[4].id));
-
-    this._demands.push(this.demandBuilder.restart()
-      .level('Advanced')
-      .mobility(true)
-      .model('Single')
-      .subject('Literature')
-      .build(this._users[4].id));
-
-    this._demands.push(this.demandBuilder.restart()
-      .level('Middle')
-      .mobility(false)
-      .model('Pair')
-      .subject('Boostrap')
-      .build(this._users[4].id));
+    const myLevel: string[] = ['Advanced', 'Low', 'Advanced', 'Common', 'Beginner', 'Advanced', 'Middle'];
+    const myMobility: boolean[] = [false, false, false, true, true, true, false];
+    const myModel: string[] = ['Group', 'Single', 'Pair', 'Single', 'Group', 'Single', 'Pair'];
+    const mySubject: string[] = ['Science', 'Programming', 'Economy', 'English', 'German', 'Literature', 'Boostrap'];
+    for (let i = 0; i < this.users.length; i++) {
+      this._demands.push(this.demandBuilder.restart()
+      .level(myLevel[i])
+      .mobility(myMobility[i])
+      .model(myModel[i])
+      .subject(mySubject[i])
+      .build(this._users[i].id));
+    }
   }
   private createUsers() {
     this._users = new Array<User>();
@@ -258,6 +162,20 @@ export class MockDataBaseService implements IDatabase {
     this.userActive.tittle = tittleUser;
     this.userActive.address = addressUser;
   }
+  deleteOffer(id: string): void {
+    delete this._offers[id];
+    console.log('Oferta eliminada');
+  }
+  deleteDemand(id: string): void {
+    delete this._demands[id];
+    console.log('demanda eliminada');
+  }
+  deleteUser(): void {
+    delete this.users[this.userActive.id];
+    this.userActive = null;
+    console.log('Usuario eliminado');
+  }
+
   public get userActive(): User {
     return this._userActive;
   }

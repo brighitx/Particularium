@@ -1,9 +1,9 @@
 import { resolve } from 'url';
-import { UserBuilder } from './../core/model/builders/userBuilder';
+import { UserBuilder } from '../../core/model/builders/userBuilder';
 import { TestBed } from '@angular/core/testing';
 
 import { MockDataBaseService } from './mock-data-base.service';
-import { User } from '../core/model/user';
+import { User } from '../../core/model/user';
 
 describe('Test for MockDataBaseService', () => {
   let builderUserForTest: UserBuilder;

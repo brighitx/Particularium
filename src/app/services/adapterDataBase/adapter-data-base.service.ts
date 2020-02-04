@@ -1,12 +1,12 @@
-import { ManagerUserService } from './managerUser/manager-user.service';
-import { ManagerOfferService } from './managerOffer/manager-offer.service';
-import { ManagerDemandService } from './managerDemand/manager-demand.service';
+import { ManagerUserService } from '../managerUser/manager-user.service';
+import { ManagerOfferService } from '../managerOffer/manager-offer.service';
+import { ManagerDemandService } from '../managerDemand/manager-demand.service';
 
 import { Injectable } from '@angular/core';
-import { Demand } from '../core/model/demand';
-import { Offer } from '../core/model/offer';
-import { User } from '../core/model/user';
-import { IDatabase } from '../interfaces/database-i';
+import { Demand } from '../../core/model/demand';
+import { Offer } from '../../core/model/offer';
+import { User } from '../../core/model/user';
+import { IDatabase } from '../../interfaces/database-i';
 
 @Injectable({
   providedIn: 'root'

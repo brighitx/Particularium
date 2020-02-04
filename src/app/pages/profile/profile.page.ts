@@ -1,4 +1,4 @@
-import { AdapterGeolocalitationService } from './../../services/adapterGeo/adapter-geolocalitation.service';
+import { IGeolocation } from 'src/app/interfaces/geolocation-i';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { MenuController, Platform } from '@ionic/angular';
@@ -21,9 +21,9 @@ export class ProfilePage {
   public tittle: string;
 
   constructor(public menuCtrl: MenuController,
-    public router: Router,
-    public dataBase: IDatabase,
-    public geo: AdapterGeolocalitationService) {
+              public router: Router,
+              public dataBase: IDatabase,
+              public geo: IGeolocation) {
 
   }
 

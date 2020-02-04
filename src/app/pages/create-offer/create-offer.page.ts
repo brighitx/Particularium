@@ -1,6 +1,6 @@
+import { IDatabase } from 'src/app/interfaces/database-i';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { AdapterDataBaseService } from 'src/app/services/adapter-data-base.service';
 
 @Component({
   selector: 'app-create-offer',
@@ -14,7 +14,7 @@ export class CreateOfferPage implements OnInit {
   private timetable: string;
   private mobility: boolean;
 
-  constructor(private dataBase: AdapterDataBaseService, public router: Router) { }
+  constructor(private dataBase: IDatabase, public router: Router) { }
 
   ngOnInit() {
   }
