@@ -1,3 +1,5 @@
+import { CameraPopoverOptions } from './camera-popover-options';
+
 export interface CameraOptions {
     quality?: number;
     destinationType?: number;

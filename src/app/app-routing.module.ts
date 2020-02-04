@@ -49,7 +49,11 @@ const routes: Routes = [
     path: 'update-profile',
     loadChildren: () => import('./pages/update-profile/update-profile.module').then(m => m.UpdateProfilePageModule),
     canActivate: [IsLoginGuard]
+  },  {
+    path: 'update-password',
+    loadChildren: () => import('./pages/update-password/update-password.module').then( m => m.UpdatePasswordPageModule)
   }
+
 
 
 ];

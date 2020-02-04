@@ -1,3 +1,4 @@
+import { CameraOptions } from './../../interfaces/i-camera-native/camera-options';
 import { Camera } from '@ionic-native/camera/ngx';
 import { Injectable } from '@angular/core';
 import { ICamera } from 'src/app/interfaces/camera-i';

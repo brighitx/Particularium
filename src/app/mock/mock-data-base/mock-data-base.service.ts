@@ -12,6 +12,21 @@ import { IDatabase } from '../../interfaces/database-i';
   providedIn: 'root'
 })
 export class MockDataBaseService implements IDatabase {
+  updateDemand(idDemand: string, subject: string, level: string, model: string, mobility: boolean) {
+    throw new Error("Method not implemented.");
+  }
+  updateOffer(idOffer: string, subject: string, level: string, model: string, mobility: boolean, timetable: string) {
+    throw new Error("Method not implemented.");
+  }
+  takeCurrentUser(): User {
+    throw new Error("Method not implemented.");
+  }
+  updatePersonalUser(nameUser: string, email: string) {
+    throw new Error("Method not implemented.");
+  }
+  updatePasswordUser(password: string) {
+    throw new Error("Method not implemented.");
+  }
 
   private login = false;
   private _userActive: User;

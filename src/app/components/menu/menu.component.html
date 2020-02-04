@@ -10,6 +10,10 @@
         Editar perfil
       </ion-item>
 
+      <ion-item color="danger" [routerLink]="['/update-password']">
+        <ion-icon slot="start" name="create"></ion-icon>
+        Cambiar contraseña
+      </ion-item>
 
       <ion-item color="danger" [routerLink]="['/create-demand']" *ngIf="checkUserStudent()">
         <ion-icon slot="start" name="document"></ion-icon>
