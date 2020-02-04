@@ -10,6 +10,10 @@ import { IGeolocation } from 'src/app/interfaces/geolocation-i';
 import { AdapterGeolocalitationService } from './services/adapterGeo/adapter-geolocalitation.service';
 import { MockGeolocalitationService } from './mock/mock-geo/mock-geolocalitation.service';
 
+import { ICamera } from './interfaces/camera-i';
+import { AdapterCameraService } from './services/adapterCamera/adapter-camera.service';
+import { MockCameraService } from './mock/mock-camera/mock-camera.service';
+
 import { ComponentsModule } from './components/components.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -24,6 +28,7 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { FirestoreSettingsToken, AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -49,7 +54,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 
     // EN ESTA LINEA CAMBIO SI QUIERO USAR EL MOCK O EL ADAPTERDATABASESERVICE
     { provide: IDatabase , useClass: AdapterDataBaseService},
-    { provide: IGeolocation, useClass: MockGeolocalitationService}
+    { provide: IGeolocation, useClass: MockGeolocalitationService},
+    { provide: ICamera, useClass: MockCameraService}
 
   ],
   bootstrap: [AppComponent]

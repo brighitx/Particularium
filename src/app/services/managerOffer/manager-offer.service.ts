@@ -70,7 +70,7 @@ export class ManagerOfferService {
         });
     });
   }
-  public delete(id: string){
+  public delete(id: string) {
     this.offersColection.doc(id).delete();
   }
 }
