@@ -11,7 +11,6 @@ import { AngularFireAuth } from '@angular/fire/auth';
   providedIn: 'root'
 })
 export class ManagerUserService {
-
   private userActive: User;
   private users: Observable<Userable[]>;
   private userColection: AngularFirestoreCollection<Userable>;
@@ -97,7 +96,7 @@ export class ManagerUserService {
     );
   }
   public delete() {
-    //this.userColection.doc(id).delete();
+    // this.userColection.doc(id).delete();
   }
   public updateUser(nameUser: string, tittleUser: string, addressUser: string) {
     this.userColection.doc(this.userActive.id).update(
@@ -107,6 +106,17 @@ export class ManagerUserService {
         address: addressUser
       }
     );
-
+  }
+  public updatePersonalUser(nameUser: string, emailUser: string) {
+    this.firebaseAuth.auth.currentUser.updateEmail(emailUser);
+    this.userColection.doc(this.userActive.id).update(
+      {
+        name: nameUser,
+        email: emailUser
+      }
+    );
+  }
+  public updatePasswordUser(password: string) {
+    this.firebaseAuth.auth.currentUser.updatePassword(password);
   }
 }

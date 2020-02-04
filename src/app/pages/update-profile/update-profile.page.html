@@ -11,13 +11,13 @@
   <ion-list>
   <ion-item>
     <ion-label position="floating">Nombre</ion-label>
-    <ion-input></ion-input>
+    <ion-input [(ngModel)]="this.name"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">Email</ion-label>
-    <ion-input></ion-input>
+    <ion-input [(ngModel)]="this.email"></ion-input>
   </ion-item>
 </ion-list>
-<ion-button expand="full" color="danger">Guardar</ion-button>
+<ion-button (click)="this.update()" expand="full" color="danger">Guardar</ion-button>
 
 </ion-content>

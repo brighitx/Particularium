@@ -13,7 +13,7 @@ import { IDatabase } from '../../interfaces/database-i';
 })
 
 export class AdapterDataBaseService implements IDatabase {
-  
+ 
   constructor(private managerUser: ManagerUserService,
               private managerDemand: ManagerDemandService,
               private managerOffer: ManagerOfferService) {
@@ -68,5 +68,20 @@ export class AdapterDataBaseService implements IDatabase {
   }
   public deleteUser(): void {
     this.managerUser.delete();
+  }
+  public updateDemand(idDemand: string, subject: string, level: string, model: string, mobility: boolean) {
+    this.managerDemand.updateDemand(idDemand, subject, level, model, mobility);
+  }
+  public updateOffer(idOffer: string, subject: string, level: string, model: string, mobility: boolean, timetable: string) {
+    this.managerOffer.updateOffer(idOffer, subject, level, model, mobility, timetable);
+  }
+  public updatePersonalUser(nameUser: string, email: string) {
+    this.managerUser.updatePersonalUser(nameUser, email);
+  }
+  public updatePasswordUser(password: string) {
+    this.managerUser.updatePasswordUser(password);
+  }
+  public takeCurrentUser(): User {
+    return this.managerUser.takeUser(this.managerUser.getIdUserActive());
   }
 }

@@ -1,3 +1,4 @@
+import { IDatabase } from 'src/app/interfaces/database-i';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdateProfilePage implements OnInit {
 
-  constructor() { }
+  public name: string;
+  public email: string;
+  constructor(public dataBase: IDatabase) {
+    this.name = this.dataBase.takeCurrentUser().name;
+    this.email = this.dataBase.takeCurrentUser().email;
+  }
+  public update() {
+    this.dataBase.updatePersonalUser(this.name, this.email);
+  }
 
   ngOnInit() {
   }

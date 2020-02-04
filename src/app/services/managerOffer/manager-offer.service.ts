@@ -10,6 +10,7 @@ import { OfferBuilder } from 'src/app/core/model/builders/offerBuilder';
   providedIn: 'root'
 })
 export class ManagerOfferService {
+
   private offers: Observable<Offerable[]>;
   private offersColection: AngularFirestoreCollection<Offerable>;
   private myOffers: Offer[];
@@ -72,5 +73,17 @@ export class ManagerOfferService {
   }
   public delete(id: string) {
     this.offersColection.doc(id).delete();
+  }
+
+  public updateOffer(idOffer: string, newSubject: string, newLevel: string, newModel: string, newMobility: boolean, newTimetable: string) {
+    this.offersColection.doc(idOffer).update(
+      {
+        level: newLevel,
+        mobility: newMobility,
+        model: newModel,
+        subject: newSubject,
+        timetable: newTimetable
+      }
+    );
   }
 }

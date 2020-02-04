@@ -1,6 +1,6 @@
 export interface CameraOptions {
     quality?: number;
-    destinationType?: number;ç
+    destinationType?: number;
     sourceType?: number;
     allowEdit?: boolean;
     encodingType?: number;

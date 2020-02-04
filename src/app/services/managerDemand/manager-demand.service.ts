@@ -52,11 +52,11 @@ export class ManagerDemandService {
     return new Promise((resolver, rejected) => {
       const demandBuilder = new DemandBuilder();
       const demand = demandBuilder.restart()
-      .subject(subject)
-      .level(level)
-      .model(model)
-      .mobility(mobility)
-      .build(uid);
+        .subject(subject)
+        .level(level)
+        .model(model)
+        .mobility(mobility)
+        .build(uid);
 
       this.demandsColection.doc(demand.id).set({
         uid: demand.uid,
@@ -75,7 +75,19 @@ export class ManagerDemandService {
         });
     });
   }
-  public delete(id: string){
+  public delete(id: string) {
     this.demandsColection.doc(id).delete();
   }
+
+  public updateDemand(idDemand: string, newSubject: string, newLevel: string, newModel: string, newMobility: boolean) {
+    this.demandsColection.doc(idDemand).update(
+      {
+        level: newLevel,
+        mobility: newMobility,
+        model: newModel,
+        subject: newSubject
+      }
+    );
+  }
+
 }
