@@ -11,24 +11,22 @@ export class AdapterGeolocalitationService implements IGeolocation {
     public geolocation: Geolocation,
     public geocoder: NativeGeocoder) { }
 
-  public getUserLocation(): Promise<string> {
+    async getUserLocation(): Promise<string> {
     let latitude: number, longitude: number;
-    const options: NativeGeocoderOptions = {
+    const geocoderOptions: NativeGeocoderOptions = {
       useLocale: true,
       maxResults: 1
     };
-    this.geolocation.getCurrentPosition().then((resp) => {
+    await this.geolocation.getCurrentPosition().then((resp) => {
       latitude = resp.coords.latitude;
       longitude = resp.coords.longitude;
     }).catch((error) => {
       alert(JSON.stringify(error));
     });
     return new Promise((resolve, reject) => {
-      this.geocoder.reverseGeocode(latitude, longitude)
-        .then((result: NativeGeocoderResult[]) => {
-          resolve(JSON.stringify(result[0]));
-        })
-        .catch((error: any) => reject('No se ha podido localizar la dirección'));
+      this.geocoder.reverseGeocode(latitude, longitude, geocoderOptions).then((result: NativeGeocoderResult[]) => {
+        resolve(JSON.stringify(result[0]));
+      }).catch((error) => reject('Ha ocurrido un error'));
     });
   }
 
@@ -40,12 +38,11 @@ export class AdapterGeolocalitationService implements IGeolocation {
     return new Promise((resolve, reject) => {
       this.geocoder.forwardGeocode(address, options)
         .then((result: NativeGeocoderResult[]) => {
-          let geo = {
+          const geo: GeoPoint = {
             latitude: result[0].latitude,
             longitude: result[0].longitude
           };
           resolve(geo);
-
         })
         .catch((error: any) => reject('Datos Incorrectos'));
     });
