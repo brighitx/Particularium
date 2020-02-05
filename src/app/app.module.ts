@@ -54,7 +54,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 
     // EN ESTA LINEA CAMBIO SI QUIERO USAR EL MOCK O EL ADAPTERDATABASESERVICE
     { provide: IDatabase , useClass: AdapterDataBaseService},
-    { provide: IGeolocation, useClass: MockGeolocalitationService},
+    { provide: IGeolocation, useClass: AdapterGeolocalitationService},
     { provide: ICamera, useClass: MockCameraService}
 
   ],

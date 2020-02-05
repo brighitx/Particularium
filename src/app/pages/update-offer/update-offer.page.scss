@@ -3,13 +3,8 @@
     color: #f25454;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
-.center {
-    display: block;
-    margin-left: 40%;
-    margin-right: auto;
-}
-
 .btnPosition{
-    margin-top: 5%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
 }

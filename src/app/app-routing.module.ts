@@ -23,7 +23,7 @@ const routes: Routes = [
   {
     path: 'profile',
     loadChildren: () => import('./pages/profile/profile.module').then(m => m.ProfilePageModule),
-    canActivate: [IsLoginGuard]
+    canActivate: [IsNotLoginGuard]
   },
   {
     path: 'stream',
@@ -49,9 +49,18 @@ const routes: Routes = [
     path: 'update-profile',
     loadChildren: () => import('./pages/update-profile/update-profile.module').then(m => m.UpdateProfilePageModule),
     canActivate: [IsLoginGuard]
-  },  {
+  },
+  {
     path: 'update-password',
     loadChildren: () => import('./pages/update-password/update-password.module').then( m => m.UpdatePasswordPageModule)
+  },
+  {
+    path: 'update-offer',
+    loadChildren: () => import('./pages/update-offer/update-offer.module').then( m => m.UpdateOfferPageModule)
+  },
+  {
+    path: 'update-demand',
+    loadChildren: () => import('./pages/update-demand/update-demand.module').then( m => m.UpdateDemandPageModule)
   }
 
 
