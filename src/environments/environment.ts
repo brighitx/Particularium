@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: 'AIzaSyC7kQHe6OzNsxYBQ2Y7Az3lGmH_7u_u9CU',
+    apiKey: '',
     authDomain: 'particulario.firebaseapp.com',
     databaseURL: 'https://particulario.firebaseio.com',
     projectId: 'particulario',
